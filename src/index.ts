@@ -7,7 +7,8 @@ const port = 20000;
 const app = new Hono();
 
 app.get('/', async (c) => {
-    const ip = getConnInfo(c).remote.address;
+    const xff = c.req.header('x-forwarded-for');
+    const ip = xff ?? getConnInfo(c).remote.address;
     return c.text(`OK: Your IP is ${ip}`);
 });
 

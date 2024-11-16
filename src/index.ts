@@ -1,10 +1,11 @@
 import { Hono } from 'hono';
 import { getConnInfo } from 'hono/bun';
-import { uptime } from './utils/uptime';
+import { Uptime, uptime } from './utils/uptime';
 
 const port = 20000;
 
 const app = new Hono();
+Uptime()
 
 app.get('/', async (c) => {
     const xff = c.req.header('x-forwarded-for');

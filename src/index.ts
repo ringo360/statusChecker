@@ -2,6 +2,8 @@ import { Hono } from 'hono';
 import { getConnInfo } from 'hono/bun';
 import { uptime } from './utils/uptime';
 
+const port = 20000;
+
 const app = new Hono();
 
 app.get('/', async (c) => {
@@ -18,4 +20,7 @@ app.onError(async (e, c) => {
     return c.text(`Error: ${e}`, 500);
 });
 
-export default app;
+export default {
+    port: port,
+    fetch: app.fetch,
+};

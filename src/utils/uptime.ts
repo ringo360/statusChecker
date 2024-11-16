@@ -3,7 +3,8 @@
  */
 export let uptime = 0;
 
-async function Uptime() {
+export async function Uptime() {
+    console.log('[Uptime] Called');
     setInterval(() => {
         uptime++;
     }, 1000);
